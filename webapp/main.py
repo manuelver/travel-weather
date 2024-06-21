@@ -30,6 +30,16 @@ def root():
 def countries():
     return list(data.keys())
 
+# Retornar ciudades de un país
+@app.get('/countries/{country}')
+def cities(country: str):
+    return list(data[country].keys())
+
+# Retornar promedio mensual de una ciudad
+@app.get('/countries/{country}/{city}')
+def monthly_averages(country: str, city: str):
+    return data[country][city]
+
 
 @app.get('/countries/{country}/{city}/{month}')
 def monthly_average(country: str, city: str, month: str):
